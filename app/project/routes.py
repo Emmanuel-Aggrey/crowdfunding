@@ -99,8 +99,7 @@ class ProjectView:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Contribution exceeds the project's goal amount. \
-                    You can only contribute up to {:.2f} more.".format(
-                    remaining_contribution)
+                    You can only contribute up to {:.2f} more.".format(remaining_contribution)
             )
 
         service_locator.project_service.add_contribution(
