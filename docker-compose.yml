@@ -10,9 +10,8 @@ services:
       - .env
     depends_on:
       db:
-        condition: service_healthy  # Add this
+        condition: service_healthy  
     environment:
-      # - DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:5432/${DATABASE_NAME}
       -  SQLALCHEMY_DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:5432/${DATABASE_NAME}
       - DATABASE_HOST=db 
   
@@ -27,7 +26,7 @@ services:
       - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    healthcheck:   # Add this section
+    healthcheck:  
       test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USER}"]
       interval: 5s
       timeout: 5s
