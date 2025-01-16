@@ -8,6 +8,7 @@
 6. alembic revision --autogenerate -m "first migrations"
 7. `$ alembic upgrade head`
 8. `$ fastapi dev `
+9. `$ http://127.0.0.1:8000/docs`
 
 # Init Alembic
 
