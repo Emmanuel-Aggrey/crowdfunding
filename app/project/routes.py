@@ -92,7 +92,8 @@ class ProjectView:
         if remaining_contribution <= 0:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Contribution goal has already been reached. No further contributions are allowed."
+                detail="Contribution goal has already been\
+                    reached. No further contributions are allowed."
             )
 
         if contribution_amount > remaining_contribution:
