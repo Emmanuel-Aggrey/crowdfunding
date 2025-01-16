@@ -9,7 +9,6 @@ class UserFactory(factory.alchemy.SQLAlchemyModelFactory):
         model = User
         sqlalchemy_session = BaseTest.get_db()
         sqlalchemy_session_persistence = "commit"
-
     is_active = True
     email = factory.Faker("email")
     hashed_password = factory.Faker("name")

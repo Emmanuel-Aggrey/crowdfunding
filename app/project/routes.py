@@ -87,7 +87,7 @@ class ProjectView:
             self.db, project.id)
 
         remaining_contribution = Decimal(
-            project.goal_amount) - total_contribution
+            project.goal_amount) - Decimal(total_contribution)
 
         if remaining_contribution <= 0:
             raise HTTPException(
@@ -126,7 +126,7 @@ class ProjectView:
             data=data,
             model=Project,
         )
-
+        self.add_project_additional_data(updated_project)
         return updated_project
 
 

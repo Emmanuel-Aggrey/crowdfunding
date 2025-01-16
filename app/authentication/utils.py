@@ -5,7 +5,7 @@ from typing import Annotated
 import jwt
 from app.accounts.schemas import UserSchema
 from app.dependencies import get_db
-from app.settings import ACCESS_TOKEN_EXPIRE_MINUTES
+from app.settings import ACCESS_TOKEN_EXPIRE
 from app.settings import ALGORITHM
 from app.settings import SECRET_KEY
 from fastapi import APIRouter
@@ -56,7 +56,7 @@ def authenticate_user(email: str, password: str, db: Session):
 def create_access_token(
     data: dict,
     expires_delta: timedelta | None = None,
-    expire_time: int = ACCESS_TOKEN_EXPIRE_MINUTES,
+    expire_time: int = ACCESS_TOKEN_EXPIRE,
     unit: str = TimeUnit.DAYS,
 ) -> dict:
     if expires_delta is None:

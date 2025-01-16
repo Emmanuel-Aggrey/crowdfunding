@@ -5,8 +5,9 @@
 3. `$ pre-commit install`
 4. create .env file
 5. copy .env.example to .env and update the values
-6. `$ alembic upgrade head`
-7. `$ fastapi dev`
+6. alembic revision --autogenerate -m "first migrations"
+7. `$ alembic upgrade head`
+8. `$ fastapi dev `
 
 # Init Alembic
 
@@ -14,13 +15,10 @@
 $ alembic init migrations
 ```
 
-# Creating migration
+# To downgrade
 
 ```bash
-$ alembic revision --autogenerate -m "first migrations"
-$ alembic upgrade head
 
-# To downgrade
 $ alembic downgrade -1
 
 ```
@@ -29,6 +27,5 @@ $ alembic downgrade -1
 
 ```bash
 $ pytest -v app or pytest -v app/module
-or
-$ fastapi dev  --reload --host 0.0.0.0 --port 8002
+
 ```
