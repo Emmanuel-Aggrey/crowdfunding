@@ -13,8 +13,11 @@ COPY . /app
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Make the start script executable
+RUN chmod +x scripts/start.sh
+
 # Expose the application port
 EXPOSE 8000
 
 # Command to run the app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8005"]
+CMD ["scripts/start.sh"]

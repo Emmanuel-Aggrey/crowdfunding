@@ -16,7 +16,6 @@ from fastapi import status
 from fastapi.security import HTTPAuthorizationCredentials
 from fastapi.security import HTTPBearer
 from fastapi.security import OAuth2PasswordBearer
-from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from app.core.dependency_injection import service_locator
@@ -108,7 +107,7 @@ async def get_current_user(
         if email is None:
             raise credentials_exception
         token_data = TokenData(email=email)
-    except InvalidTokenError:
+    except Exception:
         raise credentials_exception
 
     user = service_locator.user_service.get_user_by_email(db, token_data.email)
