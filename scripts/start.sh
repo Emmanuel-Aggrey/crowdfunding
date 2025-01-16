@@ -1,6 +1,11 @@
 #!/bin/bash
+
 echo "Waiting for database to be ready..."
-sleep 5  # Give postgres a few seconds to initialize
+
+until pg_isready -h db -p 5432; do
+  echo "Waiting for database..."
+  sleep 2
+done
 
 echo "Running database migrations..."
 alembic upgrade head

@@ -7,7 +7,7 @@
 5. copy .env.example to .env and update the values
 6. alembic revision --autogenerate -m "first migrations"
 7. `$ alembic upgrade head`
-8. `$ fastapi dev `
+8. `$ fastapi dev ` or `$ fastapi dev --host 0.0.0.0 --port 8005`
 9. `$ http://127.0.0.1:8000/docs`
 
 # Init Alembic
