@@ -38,6 +38,7 @@ $ docker pull aggrey/crowdfunding-app:latest
 # setup environment variables as shown above
 $ docker-compose build
 $ docker-compose up
+visit http://127.0.0.1:8005/docs#/
 
 
 ```
