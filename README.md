@@ -36,6 +36,8 @@ $ pytest -v app or pytest -v app/module
 ```bash
 $ docker pull aggrey/crowdfunding-app:latest
 # setup environment variables as shown above
+$ docker-compose build
+$ docker-compose up
 
 
 ```
