@@ -25,17 +25,3 @@ aws ecs wait tasks-stopped --cluster=$cluster --tasks $MIGRATION_TASK_ARN --outp
 
 echo "migration completed"
 
-# MIGRATION_LOG=$(
-#   aws logs get-log-events \
-#     --start-from-head \
-#     --log-group-name=/ecs/tuulboxchat-$cluster \
-#     --log-stream-name=ecs/tuulboxchat-$cluster-migration/$MIGRATION_TASK_ID \
-#     --output=json |
-#     python -c 'import sys;import json;print("\n".join([l["message"] for l in json.load(sys.stdin)["events"]]))'
-# )
-
-# echo $MIGRATION_LOG
-
-# if [[ $MIGRATION_LOG == *"Traceback"* ]]; then
-#   exit 1
-# fi

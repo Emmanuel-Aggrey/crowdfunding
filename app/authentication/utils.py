@@ -3,6 +3,7 @@ from datetime import timedelta
 from datetime import timezone
 from typing import Annotated
 import jwt
+from jwt.exceptions import InvalidTokenError
 from app.accounts.schemas import UserSchema
 from app.dependencies import get_db
 from app.settings import ACCESS_TOKEN_EXPIRE
@@ -107,7 +108,7 @@ async def get_current_user(
         if email is None:
             raise credentials_exception
         token_data = TokenData(email=email)
-    except Exception:
+    except InvalidTokenError:
         raise credentials_exception
 
     user = service_locator.user_service.get_user_by_email(db, token_data.email)
