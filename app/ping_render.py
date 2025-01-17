@@ -11,8 +11,8 @@ def ping_render():
     if BASE_URL:
         try:
             response = requests.get(BASE_URL)
-            logging.info("Pinged {}, Status Code: {}".format(
-                BASE_URL, response.status_code))
+            logging.info("Pinged {}, Status Code: {}"
+                         .format(BASE_URL, response.status_code))
         except requests.RequestException as e:
             logging.error(f"Error pinging {BASE_URL}: {e}")
     else:
