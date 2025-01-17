@@ -13,7 +13,7 @@ config = {
 SECRET_KEY = config.get("SECRET_KEY")
 ALGORITHM = config.get("ALGORITHM")
 ACCESS_TOKEN_EXPIRE = int(config.get("ACCESS_TOKEN_EXPIRE"))
-
+BASE_URL = config.get("BASE_URL")
 
 DATABASE_HOST = config.get("DATABASE_HOST")
 DATABASE_USER = config.get("DATABASE_USER")
