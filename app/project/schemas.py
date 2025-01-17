@@ -1,7 +1,7 @@
 
 from app.core.schema import BaseSchema
 from pydantic import BaseModel
-from datetime import datetime
+from datetime import date
 from typing import Optional, List
 from pydantic import Field
 from app.accounts.schemas import UserResponseSchema
@@ -13,7 +13,7 @@ class ProjectCreateSchema(BaseModel):
     title: str
     description: Optional[str] = ""
     goal_amount: float = Field(..., gt=0)
-    deadline: datetime
+    deadline: date
 
     class Config:
         from_attributes = True
@@ -23,7 +23,7 @@ class ProjectResponseSchema(BaseSchema, BaseModel):
     title: str
     description: Optional[str] = ""
     goal_amount: float = Field(..., gt=0)
-    deadline: datetime
+    deadline: date
     total_contribution: Optional[Decimal] = 0
     contributors: List[UserResponseSchema] = []
 

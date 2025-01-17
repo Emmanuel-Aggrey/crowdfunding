@@ -74,7 +74,8 @@ class ProjectView:
         project: ProjectResponseSchema = service_locator.general_service.get_data_by_id(
             db=self.db, key=id, model=Project)
 
-        if project.deadline < datetime.utcnow():
+        if project.deadline.date() < datetime.now().date():
+
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Cannot contribute after the deadline"
@@ -98,9 +99,8 @@ class ProjectView:
         if contribution_amount > remaining_contribution:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Contribution exceeds the project's goal amount. \
-                    You can only contribute up to {:.2f} more.".format(remaining_contribution)
-            )
+                detail="Contribution exceeds the project's goal amount. You can only contribute up to {:.2f} more."
+                .format(remaining_contribution))
 
         service_locator.project_service.add_contribution(
             db=self.db, user_id=current_user.id, project_id=project.id, amount=contribution_amount)
